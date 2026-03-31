@@ -350,7 +350,7 @@ async function atualizarDispositivo() {
 
 async function excluirDispositivo() {
     // 1. Pegar o valor que o usuário digitou no campo ID
-    const id = campoId.value.trim();
+    let id = document.getElementById('campoId');
 
     // 2. Validar: se o campo está vazio, avisar e parar
     if (!id) {
@@ -371,12 +371,12 @@ async function excluirDispositivo() {
         })
 
         if (!deletar.ok) {
-            mostrarMensagem('Erro ao cadastrar. A API retornou status ' + respostaHTTP.status + '.', 'erro');
+            mostrarMensagem('Erro ao cadastrar. A API retornou status ' + deletar.status + '.', 'erro');
             return;
         }
 
         const filtrar = filter(dispositivos.filter(d => d.id !== id));
-        const id = campoId.value.trim();
+        id = campoId.value.trim();
         campoId.value = '';
 
         renderizar()
