@@ -3,7 +3,7 @@
 // ============================================================
 
 // Endereço base da API pública de testes
-const URL_API = 'https://api.restful-api.dev/objects';
+const URL_API = 'https://restful-apidevcloe.vercel.app/objects';  //'https://api.restful-api.dev/objects';
 
 // ============================================================
 // VETOR LOCAL (nosso "espelho" dos dados da API)
@@ -359,7 +359,7 @@ async function excluirDispositivo() {
     }
 
     try {
-        const confirmar = confirm('Confirmo');
+        const confirmar = confirm('Confirma exclusão?') ;
 
             if(!confirmar){
                 mostrarMensagem('Não deletado');
@@ -384,7 +384,7 @@ async function excluirDispositivo() {
         mostrarMensagem('Deletado');
 
     } catch (error) {
-        mostrarMensagem('Erro ao cadastrar: ' + erro.message, 'erro');
+        mostrarMensagem('Erro ao cadastrar: ' + error.message, 'erro');
     }
 }
 
