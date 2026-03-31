@@ -359,7 +359,29 @@ async function excluirDispositivo() {
     }
 
     try {
+        const confirmar = confirm('Confirmo');
 
+            if(!confirmar){
+                mostrarMensagem('Não deletado');
+                return;
+            }
+
+        const deletar = await fetch(`${URL_API}/${id}`,{
+            method: "DELETE"
+        })
+
+        if (!deletar.ok) {
+            mostrarMensagem('Erro ao cadastrar. A API retornou status ' + respostaHTTP.status + '.', 'erro');
+            return;
+        }
+
+        const filtrar = filter(dispositivos.filter(d => d.id !== id));
+        const id = campoId.value.trim();
+        campoId.value = '';
+
+        renderizar()
+
+        mostrarMensagem('Deletado');
 
     } catch (error) {
         mostrarMensagem('Erro ao cadastrar: ' + erro.message, 'erro');
